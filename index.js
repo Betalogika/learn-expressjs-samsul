@@ -1,17 +1,14 @@
-const db = require('mysql')
-const koneksi = db.createConnection({
-    host: 'localhost',
-    user: 'accupc',
-    password: 'accupc',
-    database: 'expressLearn',
+import express from "express"
+
+import routes from "./Routes/web.js";
+
+const port = 8081;
+
+const app = express()
+
+app.use(routes)
+
+// port express
+app.listen(port, () => {
+    console.log(`port nya jalan hei ${port}`)
 })
-
-koneksi.connect()
-
-koneksi.query('SELECT 1 + 1 AS Solution', (err, rows, fields) => {
-    if (err) throw err
-
-    console.log('koneksi nya bro :'.rows[0].solution)
-})
-
-koneksi.end()
