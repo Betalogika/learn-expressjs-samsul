@@ -23,6 +23,7 @@ export const Login = (req, res) => {
         })
 
     }
+    // implement login js
 }
 
 export const Register = (req, res) => {
