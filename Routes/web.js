@@ -8,7 +8,7 @@ const routes = express.Router()
 
 //routes auth
 routes.post('/login', Login)
-routes.post('/register', Register)
+routes.post('/register/{:nama}/{:id}', Register)
 
 //routes user master data
 routes.post('/universitas', Universitas)
