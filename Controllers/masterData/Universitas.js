@@ -12,12 +12,19 @@ export const indexUniversitas = (req, res) => {
     })
 }
 export const storeUniversitas = (req, res) => {
-    var data = `${modelUniversitas.insert} ${(universitas, akronim, keterangan)} ${VALUES(req.query.universitas, req.query.akronim, req.query.keterangan)}`
-    modelUniversitas.conn(data, function (err, data) {
+    var universitas = req.query.universitas
+    var akronim = req.query.akronim
+    var keterangan = req.query.keterangan
+
+    var data = "INSERT INTO universitas (universitas, akronim, keterangan) VALUES ?"
+    var values = [
+        [universitas, akronim, keterangan]
+    ]
+    modelUniversitas.conn.query(data, [values], function (err) {
         if (err) throw err;
         res.json({
             'Message': 'SuccessFully Insert Data',
-            'Data': data
+            'Data': req.query
         })
     })
 
