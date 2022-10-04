@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { indexUniversitas, storeUniversitas, ubahUniversitas, hapusUniversitas } from '../Controllers/masterData/Universitas'
+import { indexUniversitas, storeUniversitas, ubahUniversitas, hapusUniversitas } from '../Controllers/masterData/Universitas.js'
 
 const router = express.Router()
 
