@@ -12,15 +12,16 @@ export const indexUniversitas = (req, res) => {
     })
 }
 export const storeUniversitas = (req, res) => {
+
     var universitas = req.query.universitas
     var akronim = req.query.akronim
     var keterangan = req.query.keterangan
 
-    var data = modelUniversitas.insert_universitas + "(universitas, akronim, keterangan) VALUES ?"
+    var create = modelUniversitas.insert_universitas + "(universitas, akronim, keterangan) VALUES ?"
     var values = [
         [universitas, akronim, keterangan]
     ]
-    modelUniversitas.conn.query(data, [values], function (err) {
+    modelUniversitas.conn.query(create, [values], function (err) {
         if (err) throw err;
         res.json({
             'Message': 'SuccessFully Insert Data',
@@ -30,9 +31,25 @@ export const storeUniversitas = (req, res) => {
 
 }
 export const ubahUniversitas = (req, res) => {
-    res.send({
-        'Message': 'SuccessFully Update Data',
-        'Data': req.query.id
+
+    var idUniversitas = req.params.id
+    var universitas = req.query.universitas
+    var akronim = req.query.akronim
+    var keterangan = req.query.keterangan
+
+    var update = modelUniversitas.update_universitas + " set ? WHERE iduniversitas = " + idUniversitas
+    var set = {
+        'universitas': universitas,
+        'akronim': akronim,
+        'keterangan': keterangan
+    }
+
+    modelUniversitas.conn.query(update, [set], function (err) {
+        if (err) throw err;
+        res.json({
+            'Message': 'Successfully Update Data',
+            'Data': req.query
+        })
     })
 
 }
