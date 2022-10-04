@@ -6,9 +6,12 @@ const insert_universitas = "INSERT INTO universitas"
 
 const update_universitas = "UPDATE universitas"
 
+const delete_universitas = 'DELETE FROM universitas'
+
 export default {
     conn,
     query_universitas,
     insert_universitas,
-    update_universitas
+    update_universitas,
+    delete_universitas
 }

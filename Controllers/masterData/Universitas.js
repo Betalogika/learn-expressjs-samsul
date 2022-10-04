@@ -33,13 +33,13 @@ export const storeUniversitas = (req, res) => {
 export const ubahUniversitas = (req, res) => {
 
     var idUniversitas = req.params.id
-    var universitas = req.query.universitas
+    var namaUniversitas = req.query.universitas
     var akronim = req.query.akronim
     var keterangan = req.query.keterangan
 
     var update = modelUniversitas.update_universitas + " set ? WHERE iduniversitas = " + idUniversitas
     var set = {
-        'universitas': universitas,
+        'universitas': namaUniversitas,
         'akronim': akronim,
         'keterangan': keterangan
     }
@@ -54,9 +54,14 @@ export const ubahUniversitas = (req, res) => {
 
 }
 export const hapusUniversitas = (req, res) => {
-    res.send({
-        'Message': 'SuccessFully Delete Data',
-        'Data': req.query.id
-    })
+    var iduniversitas = req.params.id
 
+    var hapus = modelUniversitas.delete_universitas + " WHERE iduniversitas = " + iduniversitas
+
+    modelUniversitas.conn.query(hapus, function (err) {
+        if (err) throw err;
+        res.json({
+            'Message': 'Successfully Delete Data',
+        })
+    })
 }
