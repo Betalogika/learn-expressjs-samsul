@@ -1,8 +1,12 @@
 import conn from '../Config/databases.js'
 
-const universitas = conn.connect(function (err, res) {
-    if (err) throw err;
-    console.log('jalan tuh koneksi nya')
-})
+const query = "SELECT * FROM universitas"
 
-export default universitas
+const insert = "INSERT INTO universitas"
+
+
+export default {
+    conn,
+    query,
+    insert
+}
