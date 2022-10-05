@@ -9,5 +9,8 @@ router.post('/universitas_add', storeUniversitas)
 router.put('/universitas/:id/update', ubahUniversitas)
 router.delete('/universitas/:id/delete', hapusUniversitas)
 
+//routes auth
+routes.post('/login', Login)
+routes.post('/register/{:nama}/{:id}', Register)
 
 export default router
