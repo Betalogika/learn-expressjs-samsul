@@ -23,8 +23,11 @@ export const Login = (req, res) => {
         })
 
     }
+    // implement login js
 }
 
 export const Register = (req, res) => {
-    res.json({ "message": "halaman Register" })
+    res.json({
+        "data": req.params
+    })
 }
