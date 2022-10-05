@@ -1,20 +1,16 @@
-import express from "express";
+import express from 'express'
 
-import { Login, Register } from "../User/Authentikasi/Auth.js"
+import { indexUniversitas, storeUniversitas, ubahUniversitas, hapusUniversitas } from '../Controllers/masterData/Universitas.js'
 
-import { Universitas, Fakultas, Jurusan } from "../User/masterData/UserMasterData.js"
+const router = express.Router()
 
-const routes = express.Router()
+router.get('/universitas', indexUniversitas)
+router.post('/universitas_add', storeUniversitas)
+router.put('/universitas/:id/update', ubahUniversitas)
+router.delete('/universitas/:id/delete', hapusUniversitas)
 
 //routes auth
-routes.post('/login', Login)
-routes.post('/register/{:nama}/{:id}', Register)
+router.post('/login', Login)
+router.post('/register/{:nama}/{:id}', Register)
 
-//routes user master data
-routes.post('/universitas', Universitas)
-routes.post('/fakultas', Fakultas)
-routes.post('/jurusan', Jurusan)
-
-
-
-export default routes
+export default router
